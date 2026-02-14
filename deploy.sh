@@ -84,7 +84,7 @@ get_repo_name() {
 
     # Update Vite config with correct base path
     print_step "Updating Vite configuration for GitHub Pages..."
-    sed -i.bak "s|/Valentine-DKTT-Concert-Invitation/|/$REPO_NAME/|g" vite.config.js
+    sed -i.bak "s|/Valentine-Invitation/|/$REPO_NAME/|g" vite.config.js
     if [ $? -eq 0 ]; then
         print_success "Vite config updated for repository: $REPO_NAME"
         rm -f vite.config.js.bak
