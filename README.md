@@ -13,7 +13,7 @@ A romantic and interactive Vue.js web application designed as a playful invitati
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-github-username.github.io/Valentine) *(Coming Soon)*
+[View Live Demo](https://your-github-username.github.io/Valentine-DKTT-Concert-Invitation) *(Create your own!)*
 
 ## 🛠️ Technologies Used
 
@@ -27,8 +27,8 @@ A romantic and interactive Vue.js web application designed as a playful invitati
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/Valentine.git
-cd Valentine
+git clone https://github.com/your-username/Valentine-DKTT-Concert-Invitation.git
+cd Valentine-DKTT-Concert-Invitation
 ```
 
 2. Install dependencies:
@@ -41,7 +41,7 @@ npm install
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:3000`
+4. Open your browser and navigate to `http://localhost:3001`
 
 ## 🎯 How It Works
 
@@ -103,22 +103,43 @@ Valentine/
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### GitHub Pages (Recommended)
 
-1. Build the project:
+**Easy Deploy:**
 ```bash
-npm run build
+# Run the deploy script
+./deploy.sh
 ```
 
-2. Deploy to GitHub Pages:
+**Manual Deploy:**
+
+1. Create a GitHub repository:
+   - Go to https://github.com/new
+   - Name it `Valentine-DKTT-Concert-Invitation` (or any name)
+   - Make it public
+
+2. Push your code:
 ```bash
-npm run deploy
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+git add .
+git commit -m "💖 Initial romantic invitation"
+git branch -M main
+git push -u origin main
 ```
 
-### Manual Deployment
+3. Enable GitHub Pages:
+   - Go to your repository Settings → Pages
+   - Source: "GitHub Actions"
+   - Wait 2-5 minutes for deployment
 
-1. Build the project: `npm run build`
-2. Upload the `dist` folder to your hosting provider
+4. Your demo will be available at:
+   `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`
+
+### Other Deployment Options
+
+- **Netlify**: Connect GitHub repo, build command: `npm run build`, publish directory: `dist`
+- **Vercel**: Import from GitHub, framework: Vue.js
+- **Manual**: Build with `npm run build`, upload `dist` folder
 
 ## 🤝 Contributing
 
@@ -140,7 +161,8 @@ Created with love for a special someone. May this playful invitation bring joy a
 
 - **Developer**: Kamil Özkaya
 - **Email**: [your-email@example.com]
-- **GitHub**: [@your-username](https://github.com/your-username)
+**GitHub**: [@your-username](https://github.com/your-username)
+- **Live Demo**: [View Demo](https://your-username.github.io/Valentine-DKTT-Concert-Invitation)
 
 ---
 
