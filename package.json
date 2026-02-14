@@ -1,0 +1,36 @@
+{
+  "name": "valentine-concert-invitation",
+  "version": "1.0.0",
+  "description": "A romantic Vue.js web application for a DKTT Concert invitation with interactive elements",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "keywords": [
+    "vue",
+    "valentine",
+    "romantic",
+    "interactive",
+    "concert",
+    "invitation"
+  ],
+  "author": "Kamil Özkaya",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5",
+    "gh-pages": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/Valentine.git"
+  },
+  "homepage": "https://your-username.github.io/Valentine"
+}
