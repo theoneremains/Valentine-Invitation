@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Invitation - Path Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b9d, #ffc1cc);
+            color: white;
+        }
+        .test-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .success {
+            background: rgba(0,255,0,0.2);
+        }
+        .error {
+            background: rgba(255,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Valentine Invitation - Path Test</h1>
+
+    <div class="test-box">
+        <h3>Current URL Information:</h3>
+        <p><strong>Base</p> URL:</strong> <span id="baseUrl"></span></p>
+        <p><strong>Current Path:</strong> <span id="currentPath"></span></p>
+        <p><strong>Expected Base:</strong> /Valentine-Invitation/</p>
+    </div>
+
+    <div class="test-box">
+        <h3>Asset Path Tests:</h3>
+        <p id="cssTest">🔄 Testing CSS loading...</p>
+        <p id="jsTest">🔄 Testing JS module support...</p>
+        <p id="faviconTest">🔄 Testing favicon...</p>
+    </div>
+
+    <div class="test-box">
+        <h3>Browser Information:</h3>
+        <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
+        <p><strong>Module Support:</strong> <span id="moduleSupport"></span></p>
+    </div>
+
+    <div class="test-box">
+        <h3>GitHub Pages Specific Tests:</h3>
+        <p id="jekyllTest">🔄 Checking Jekyll processing...</p>
+        <p id="mimeTest">🔄 Checking MIME type handling...</p>
+    </div>
+
+    <script>
+        // Display basic URL information
+        document.getElementById('baseUrl').textContent = window.location.origin;
+        document.getElementById('currentPath').textContent = window.location.pathname;
+        document.getElementById('userAgent').textContent = navigator.userAgent;
+
+        // Check module support
+        const moduleSupport = 'noModule' in HTMLScriptElement.prototype ? 'Supported' : 'Not Supported';
+        document.getElementById('moduleSupport').textContent = moduleSupport;
+
+        // Test CSS loading
+        const testCSS = document.createElement('link');
+        testCSS.rel = 'stylesheet';
+        testCSS.href = '/Valentine-Invitation/assets/index-cbd1eefd.css';
+        testCSS.onload = () => {
+            document.getElementById('cssTest').textContent = '✅ CSS path is accessible';
+            document.getElementById('cssTest').className = 'success';
+        };
+        testCSS.onerror = () => {
+            document.getElementById('cssTest').textContent = '❌ CSS path failed';
+            document.getElementById('cssTest').className = 'error';
+        };
+        document.head.appendChild(testCSS);
+
+        // Test favicon
+        const testFavicon = new Image();
+        testFavicon.src = '/Valentine-Invitation/heart-favicon.svg';
+        testFavicon.onload = () => {
+            document.getElementById('faviconTest').textContent = '✅ Favicon path is accessible';
+            document.getElementById('faviconTest').className = 'success';
+        };
+        testFavicon.onerror = () => {
+            document.getElementById('faviconTest').textContent = '❌ Favicon path failed';
+            document.getElementById('faviconTest').className = 'error';
+        };
+
+        // Test JS module loading
+        fetch('/Valentine-Invitation/assets/index-0859bc87.js')
+            .then(response => {
+                if (response.ok) {
+                    const contentType = response.headers.get('content-type');
+                    document.getElementById('jsTest').textContent = `✅ JS file accessible (MIME: ${contentType})`;
+                    document.getElementById('jsTest').className = 'success';
+
+                    // Update MIME test
+                    if (contentType && (contentType.includes('javascript') || contentType.includes('application/javascript'))) {
+                        document.getElementById('mimeTest').textContent = '✅ Correct MIME type for JS files';
+                        document.getElementById('mimeTest').className = 'success';
+                    } else {
+                        document.getElementById('mimeTest').textContent = `❌ Incorrect MIME type: ${contentType}`;
+                        document.getElementById('mimeTest').className = 'error';
+                    }
+                } else {
+                    document.getElementById('jsTest').textContent = `❌ JS file not accessible (${response.status})`;
+                    document.getElementById('jsTest').className = 'error';
+                }
+            })
+            .catch(error => {
+                document.getElementById('jsTest').textContent = `❌ JS file fetch error: ${error.message}`;
+                document.getElementById('jsTest').className = 'error';
+            });
+
+        // Check Jekyll processing
+        fetch('/.nojekyll')
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('jekyllTest').textContent = '✅ .nojekyll file present (Jekyll disabled)';
+                    document.getElementById('jekyllTest').className = 'success';
+                } else {
+                    document.getElementById('jekyllTest').textContent = '⚠️ .nojekyll file not found (Jekyll may interfere)';
+                    document.getElementById('jekyllTest').className = 'error';
+                }
+            })
+            .catch(error => {
+                document.getElementById('jekyllTest').textContent = `❌ Jekyll test failed: ${error.message}`;
+                document.getElementById('jekyllTest').className = 'error';
+            });
+
+        // Try to load the main JS as a module to see exact error
+        setTimeout(() => {
+            try {
+                const script = document.createElement('script');
+                script.type = 'module';
+                script.src = '/Valentine-Invitation/assets/index-0859bc87.js';
+                script.onload = () => {
+                    console.log('✅ Module loaded successfully');
+                };
+                script.onerror = (error) => {
+                    console.error('❌ Module loading error:', error);
+                };
+                document.head.appendChild(script);
+            } catch (error) {
+                console.error('❌ Module creation error:', error);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

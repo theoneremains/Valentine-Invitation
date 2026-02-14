@@ -55,6 +55,12 @@ jobs:
           npm run build
           echo "Build completed!"
 
+      - name: 📄 Add .nojekyll file
+        run: |
+          echo "Adding .nojekyll file to prevent GitHub Pages Jekyll processing..."
+          touch dist/.nojekyll
+          echo "✅ .nojekyll file added"
+
       - name: 📁 Verify build output
         run: |
           echo "Build output verification:"
